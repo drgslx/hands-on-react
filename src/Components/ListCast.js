@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-function ListCast(onChoice) {
-    const [cast, setCast] = useState([]);
+function ListCast({cast, onChoice}) {
 
-    async function fetchCast() {
-        const response = await fetch('cast.json');
-        setCast(await response.json()); 
-    }
-
-    useEffect(() => {
-        fetchCast();
-    });
-
+    
 
   return (
     <>
-        <div style ={{
+        <div className={cast.name} style ={{
             display: "grid", 
             gridTemplateColumns: `repeat(auto-fit, minmax(140px, 1fr))`,
             gap: `1rem`,
             marginBottom: '1rem', 
         }}>
-            {cast.map(member => {
+            {cast.map(cast => {
                 return(
-                    <a onClick={onChoice(member)} key={member.id} tooltip={member.name}>
-                        <img src={require(`../images/${member.slug}_tn.svg`)} alt={member.name}/>
+                    <a  onClick={() => onChoice(cast)} key={cast.id} tooltip={cast.name}>
+                        <img src={require(`../images/${cast.slug}.svg`)} alt={cast.name}/>
                     </a>
                     
                 );

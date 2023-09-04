@@ -1,0 +1,7 @@
+li {
+    display: inline;
+    color: red;
+    border: 3px solid red;
+    padding: 3px;
+    margin: 3px;
+}
